@@ -1,9 +1,9 @@
 lint: {}
-nf_core_version: 3.5.1
+nf_core_version: 4.0.0
 repository_type: pipeline
 template:
-  author: Thomas Isensee
-  description: A workflow for sWGS genotype likelihood calling and relatedness estimation
+  author: Thomas Isensee, Gisela H. Kopp
+  description: A workflow for lcWGS genotype likelihood calling and relatedness estimation
   force: false
   is_nfcore: true
   name: genomicrelatedness
