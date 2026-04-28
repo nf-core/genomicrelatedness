@@ -1,4 +1,12 @@
+#----------------#
+#- System files -#
+#----------------#
 .DS_Store
+
+#----------------------------#
+#- MultiQC reports and data -#
+#----------------------------#
+multiqc/multiqc*/**
 multiqc/multiqc_data/multiqc.parquet
 multiqc/multiqc_data/multiqc.log
 multiqc/multiqc_data/multiqc_data.json
@@ -7,4 +15,53 @@ multiqc/multiqc_data/multiqc_software_versions.txt
 multiqc/multiqc_data/llms-full.txt
 multiqc/multiqc_plots/{svg,pdf,png}/*.{svg,pdf,png}
 multiqc/multiqc_report.html
+
+#-----------------#
+#- Pipeline info -#
+#-----------------#
 pipeline_info/*.{html,json,txt,yml}
+
+#-------------------------#
+#- Preprocessing outputs -#
+#-------------------------#
+preprocessing/fastp/*fastp.{html,json,log}
+preprocessing/alignment/cram/*.metrics
+preprocessing/coverage/*.txt
+preprocessing/stats/*.stats
+
+#--------------#
+#- BAM / CRAM -#
+#--------------#
+**/*.{bam,bam.bai,cram,cram.crai}
+
+#-------#
+#- VCF -#
+#-------#
+**/*.{vcf,vcf.gz,vcf.gz.tbi}
+
+#-----------------#
+#- Bootstrapping -#
+#-----------------#
+bootstrapping/round_*/stats/*bcftools_stats.txt
+
+#--------#
+#- BQSR -#
+#--------#
+**/*.table
+**/qc/*.csv
+**/qc/*.pdf
+
+#---------------#
+#- Genomics DB -#
+#---------------#
+**/db/*_joint/**
+
+#-------------------#
+#- Variant Calling -#
+#-------------------#
+variant_calling/gatk/stats/*bcftools_stats.txt
+
+#---------------#
+#- Relatedness -#
+#---------------#
+relatedness_estimation/intersection/sites.txt
