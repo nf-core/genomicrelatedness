@@ -1,0 +1,28 @@
+nextflow_process {
+
+    name "Test Process MAKE_SCAFFOLD_BED"
+    script "../main.nf"
+    process "MAKE_SCAFFOLD_BED"
+
+    tag "modules"
+    tag "modules_local"
+
+    test("test-make-scaffold-bed") {
+
+        when {
+            process {
+                """
+                input[0] = channel.value(["chr1", "chrU"])
+                input[1] = [[ id:'test' ], file(params.modules_testdata_base_path + '/genomics/homo_sapiens/pairtools/frag.bed', checkIfExists: true)]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+}

@@ -1,0 +1,67 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "angsd_ngsrelate"
+description: Estimate pairwise relatedness and inbreeding coefficients from VCF genotype information with ngsRelate v2. Automatically extracts sample IDs from the input VCF header and provides them to ngsRelate via the -z option.
+keywords:
+  - ngsrelate
+  - relatedness
+  - inbreeding
+  - population genetics
+notes: A temporary sample ID file is generated internally from the VCF header using bcftools query -l and passed to ngsRelate via -z.
+tools:
+  - "ngsrelate":
+      description: "NgsRelate estimates relatedness and inbreeding coefficients from low-coverage sequencing data."
+      homepage: "http://www.popgen.dk/software/"
+      documentation: "https://www.popgen.dk/software/index.php/NgsRelate"
+      tool_dev_url: "https://github.com/ANGSD/NgsRelate"
+      doi: "10.1093/gigascience/giz034"
+      licence: ["GNU General Public License v2.0"]
+      identifier: ""
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. [ id:'test' ]
+    - vcf:
+        type: file
+        description: VCF file containing genotype information.
+        pattern: "*.{vcf,vcf.gz}"
+        ontologies:
+          - edam: "http://edamontology.org/format_3016"
+output:
+  result:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. [ id:'test' ]
+      - "*.res":
+          type: file
+          description: Pairwise relatedness and inbreeding results from ngsRelate.
+          pattern: "*.res"
+          ontologies: []
+  versions_ngsrelate:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - ngsrelate:
+          type: string
+          description: The name of the tool
+      - "2.0":
+          type: string
+          description: Version
+topics:
+  versions:
+    - - ${task.process}:
+          type: string
+          description: The name of the process
+      - ngsrelate:
+          type: string
+          description: The name of the tool
+      - "2.0":
+          type: string
+          description: Version
+authors:
+  - "@thomasisensee"
+maintainers:
+  - "@thomasisensee"

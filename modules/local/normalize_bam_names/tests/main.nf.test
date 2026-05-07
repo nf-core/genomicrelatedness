@@ -1,0 +1,27 @@
+nextflow_process {
+
+    name "Test Process NORMALIZE_BAM_NAMES"
+    script "../main.nf"
+    process "NORMALIZE_BAM_NAMES"
+
+    tag "modules"
+    tag "modules_local"
+
+    test("test-nomralize-bam-names") {
+
+        when {
+            process {
+                """
+                input[0] = [[ id:'test' ], file(params.modules_testdata_base_path + 'genomics/sarscov2/illumina/bam/test.paired_end.sorted.bam', checkIfExists: true)]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+}

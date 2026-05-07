@@ -1,0 +1,104 @@
+{
+    "homo_sapiens - cram": {
+        "content": [
+            "test.replaced.cram",
+            {
+                "versions_gatk4": [
+                    [
+                        "GATK4_ADDORREPLACEREADGROUPS",
+                        "gatk4",
+                        "4.6.2.0"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-01-21T14:02:58.327592375"
+    },
+    "sarscov2 - bam - stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            
+                        },
+                        "null.replaced.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            
+                        },
+                        "null.replaced.bam.bai:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    [
+                        "GATK4_ADDORREPLACEREADGROUPS",
+                        "gatk4",
+                        "4.6.2.0"
+                    ]
+                ],
+                "bai": [
+                    [
+                        {
+                            
+                        },
+                        "null.replaced.bam.bai:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "bam": [
+                    [
+                        {
+                            
+                        },
+                        "null.replaced.bam:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "cram": [
+                    
+                ],
+                "versions_gatk4": [
+                    [
+                        "GATK4_ADDORREPLACEREADGROUPS",
+                        "gatk4",
+                        "4.6.2.0"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-01-21T14:03:10.092273591"
+    },
+    "sarscov2 - bam": {
+        "content": [
+            "null.replaced.bam",
+            "null.replaced.bai",
+            {
+                "versions_gatk4": [
+                    [
+                        "GATK4_ADDORREPLACEREADGROUPS",
+                        "gatk4",
+                        "4.6.2.0"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.2"
+        },
+        "timestamp": "2026-01-21T14:02:44.327151963"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "test-bcftools-call": {
+        "content": [
+            [
+                [
+                    {
+                        "id": "test"
+                    },
+                    "test_vcf.vcf.gz.tbi:md5,4cb176febbc8c26d717a6c6e67b9c905"
+                ]
+            ],
+            "test_vcf.vcf.gz",
+            [
+                [
+                    "BCFTOOLS_CALL",
+                    "bcftools",
+                    "1.22"
+                ]
+            ]
+        ],
+        "timestamp": "2026-02-16T11:48:23.201086544",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    }
+}

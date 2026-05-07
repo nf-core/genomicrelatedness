@@ -1,0 +1,37 @@
+{
+    "test-split-intervals": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        [
+                            "interval_1.bed:md5,ed0b480c18bedee0e79020bcaec80c81",
+                            "interval_2.bed:md5,14b7ef3005518d93fbe78ce1b5401356",
+                            "interval_3.bed:md5,d34e83bdf92603110a932b9419e57fc0"
+                        ]
+                    ]
+                ],
+                "bed": [
+                    [
+                        {
+                            "id": "sample1"
+                        },
+                        [
+                            "interval_1.bed:md5,ed0b480c18bedee0e79020bcaec80c81",
+                            "interval_2.bed:md5,14b7ef3005518d93fbe78ce1b5401356",
+                            "interval_3.bed:md5,d34e83bdf92603110a932b9419e57fc0"
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-03-19T07:30:35.774390857",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    }
+}

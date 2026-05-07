@@ -1,0 +1,53 @@
+{
+    "test-sample-names": {
+        "content": [
+            "test.res",
+            [
+                [
+                    "ANGSD_NGSRELATE",
+                    "ngsrelate",
+                    "2.0"
+                ]
+            ]
+        ],
+        "timestamp": "2026-03-25T15:15:20.4109181",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "test-default": {
+        "content": [
+            "test.res",
+            [
+                [
+                    "ANGSD_NGSRELATE",
+                    "ngsrelate",
+                    "2.0"
+                ]
+            ]
+        ],
+        "timestamp": "2026-03-25T15:14:55.425869779",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    },
+    "test - stub": {
+        "content": [
+            "test.res",
+            [
+                [
+                    "ANGSD_NGSRELATE",
+                    "ngsrelate",
+                    "2.0"
+                ]
+            ]
+        ],
+        "timestamp": "2026-03-25T15:15:38.734447429",
+        "meta": {
+            "nf-test": "0.9.5",
+            "nextflow": "25.10.4"
+        }
+    }
+}

@@ -101,24 +101,26 @@ workflow PIPELINE_INITIALISATION {
     //
     // Create channel from input file provided through params.input
     //
-
     channel
         .fromList(samplesheetToList(input, "${projectDir}/assets/schema_input.json"))
         .map {
-            meta, fastq_1, fastq_2 ->
-                if (!fastq_2) {
-                    return [ meta.id, meta + [ single_end:true ], [ fastq_1 ] ]
-                } else {
-                    return [ meta.id, meta + [ single_end:false ], [ fastq_1, fastq_2 ] ]
+            meta, fastq_1, fastq_2, spring_1, spring_2, bam, cram ->
+                if (fastq_1 && !fastq_2) {
+                    return [ meta + [ single_end:true ], [ fastq_1 ] ]
+                } else if (fastq_1 && fastq_2)
+                {
+                    return [ meta + [ single_end:false ], [ fastq_1, fastq_2 ] ]
+                } else if (spring_1 && !spring_2) {
+                    return [ meta + [ single_end:true ], [ spring_1 ] ]
+                } else if (spring_1 && spring_2)
+                {
+                    return [ meta + [ single_end:false ], [ spring_1, spring_2 ] ]
+                } else if (bam) {
+                    return [ meta, [ bam ] ]
                 }
-        }
-        .groupTuple()
-        .map { samplesheet ->
-            validateInputSamplesheet(samplesheet)
-        }
-        .map {
-            meta, fastqs ->
-                return [ meta, fastqs.flatten() ]
+                else if (cram) {
+                    return [ meta, [ cram ] ]
+                }
         }
         .set { ch_samplesheet }
 
@@ -164,7 +166,6 @@ workflow PIPELINE_COMPLETION {
         }
 
         completionSummary(monochrome_logs)
-
     }
 
     workflow.onError {

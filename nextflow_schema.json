@@ -43,6 +43,260 @@
                 }
             }
         },
+        "reference_genome_options": {
+            "title": "Reference genome options",
+            "type": "object",
+            "fa_icon": "fas fa-dna",
+            "description": "Reference genome related files and options required for the workflow.",
+            "properties": {
+                "fasta": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "mimetype": "text/plain",
+                    "pattern": "^\\S+\\.fn?a(sta)?(\\.gz)?$",
+                    "description": "Path to FASTA reference genome file.",
+                    "help_text": "Provide the absolute or relative path to the FASTA file used as reference genome. The pipeline will automatically create BWA and FAI indices if they are missing.",
+                    "fa_icon": "fas fa-file-code"
+                },
+                "fasta_fai": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "mimetype": "text/plain",
+                    "pattern": "^\\S+\\.fn?a(sta)?(\\.gz)?\\.fai$",
+                    "description": "Path to FASTA index (.fai) file for the reference genome.",
+                    "help_text": "Optional. Provide an existing FAI index file. If omitted, the pipeline will generate one automatically using samtools faidx.",
+                    "fa_icon": "fas fa-file-code"
+                },
+                "dict": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "mimetype": "text/plain",
+                    "pattern": "^\\S+\\.dict$",
+                    "description": "Path to sequence dictionary (.dict) for the reference genome.",
+                    "help_text": "Optional. Provide an existing GATK-style sequence dictionary. If omitted, the pipeline will create it using GATK CreateSequenceDictionary.",
+                    "fa_icon": "fas fa-file-alt"
+                },
+                "bwamem2_index": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "exists": true,
+                    "description": "Path to directory containing the BWA-MEM2 index for the reference genome.",
+                    "help_text": "Optional. Provide a directory with pre-built BWA-MEM2 index files (e.g., .0123, .amb, .ann, .bwt.2bit.64, .pac). If omitted, the pipeline will generate the index automatically.",
+                    "fa_icon": "fas fa-folder-open"
+                },
+                "intervals": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "exists": true,
+                    "description": "Path to directory containing the intervals in bed format.",
+                    "help_text": "Optional. Provide a directory with pre-built interval files (e.g., interval_001.bed, interval_002.bed, …). If omitted, the pipeline will generate intervals automatically.",
+                    "fa_icon": "fas fa-folder-open"
+                },
+                "target_number_of_interval_files": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "description": "Number of interval files to split the reference genome into for parallel processing.",
+                    "help_text": "Number of interval files to split the reference genome into for parallel processing during alignment and variant calling. Higher numbers can improve performance on large genomes but may increase overhead.",
+                    "fa_icon": "fas fa-hashtag"
+                },
+                "max_number_of_intervals_per_file": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "description": "Maximum number of intervals per interval file for parallel processing.",
+                    "help_text": "Maximum number of intervals per interval file for parallel processing during alignment and variant calling. Lower numbers can reduce overhead but may decrease parallelism.",
+                    "fa_icon": "fas fa-hashtag"
+                }
+            },
+            "required": ["fasta"]
+        },
+        "variant_set_options": {
+            "title": "Variant set options",
+            "type": "object",
+            "fa_icon": "fas fa-dna",
+            "description": "Options for providing an existing known variant set or generating one via bootstrapping.",
+            "properties": {
+                "known_variants_vcf": {
+                    "type": ["string", "null"],
+                    "fa_icon": "fas fa-copy",
+                    "format": "file-path",
+                    "pattern": "^\\S+\\.vcf\\.gz$",
+                    "exists": true,
+                    "mimetype": "text/plain",
+                    "description": "Path to known variant set vcf file.",
+                    "help_text": "If none provided, it will be generated via bootstrap algorithm."
+                },
+                "known_variants_tbi": {
+                    "type": ["string", "null"],
+                    "fa_icon": "fas fa-copy",
+                    "format": "file-path",
+                    "pattern": "^\\S+\\.vcf\\.gz\\.tbi$",
+                    "exists": true,
+                    "mimetype": "text/plain",
+                    "description": "Path to known variant set tabix index tbi file.",
+                    "help_text": "If none provided, it will be generated automatically from the known index file, if provided."
+                },
+                "bootstrapping_rounds": {
+                    "type": ["integer", "null"],
+                    "minimum": 1,
+                    "maximum": 3,
+                    "fa_icon": "fas fa-arrows-spin",
+                    "description": "Number of bootstrapping rounds to perform when generating a variant set.",
+                    "help_text": "Cannot be set if known_variants_vcf is provided."
+                },
+                "include_scaffolds": {
+                    "type": ["string", "array", "null"],
+                    "items": { "type": "string" },
+                    "fa_icon": "fas fa-check",
+                    "description": "List of scaffolds (e.g., chromosome or contig names) to include using vcftools. Can be passed as single string, array of strings, path to text file (including .bed). Leave empty to choose all by default.",
+                    "help_text": "Example: [\"chrM\", \"MT\", \"chrUn_Mito_1\"]"
+                },
+                "exclude_scaffolds": {
+                    "type": ["string", "array", "null"],
+                    "items": { "type": "string" },
+                    "fa_icon": "fas fa-ban",
+                    "description": "List of scaffolds (e.g., chromosome or contig names) to exclude using vcftools. Can be passed as single string, array of strings, path to text file (including .bed). Leave empty to disable exclusion.",
+                    "help_text": "Example: [\"chrM\", \"MT\", \"chrUn_Mito_1\"]"
+                }
+            },
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "known_variants_vcf": { "type": "string" }
+                        },
+                        "required": ["known_variants_vcf"]
+                    },
+                    "then": {
+                        "properties": {
+                            "bootstrapping_rounds": { "type": "null" }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "bootstrapping_rounds": { "type": "integer" }
+                        },
+                        "required": ["bootstrapping_rounds"]
+                    },
+                    "then": {
+                        "properties": {
+                            "known_variants_vcf": { "type": "null" },
+                            "known_variants_tbi": { "type": "null" }
+                        },
+                        "required": ["bootstrapping_rounds"]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "include_scaffolds": {
+                                "not": { "type": "null" }
+                            }
+                        },
+                        "required": ["include_scaffolds"]
+                    },
+                    "then": {
+                        "properties": {
+                            "exclude_scaffolds": {
+                                "type": "null"
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "exclude_scaffolds": {
+                                "not": { "type": "null" }
+                            }
+                        },
+                        "required": ["exclude_scaffolds"]
+                    },
+                    "then": {
+                        "properties": {
+                            "include_scaffolds": {
+                                "type": "null"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "skip_stages_options": {
+            "title": "Stages options",
+            "type": "object",
+            "fa_icon": "fas fa-forward",
+            "description": "Options for pipeline stages to run.",
+            "properties": {
+                "hard_filter_variants": {
+                    "type": "boolean",
+                    "description": "Whether to perform hard filtering of variants.",
+                    "fa_icon": "fas fa-filter",
+                    "help_text": "Enable this option to perform hard filtering of variants using GATK VariantFiltration after variant calling. This step applies a set of predefined filters to the called variants based on quality metrics to remove low-quality variant calls."
+                },
+                "skip_bqsr": {
+                    "type": "boolean",
+                    "description": "Whether to skip Base Quality Score Recalibration (BQSR) on the aligned reads.",
+                    "fa_icon": "fas fa-forward",
+                    "help_text": "Disable this option to perform BQSR using GATK. This step can improve variant calling accuracy by correcting systematic errors made by the sequencer when estimating the quality scores of each base call. This stage runs only if a known variant set is provided via --known_variants_vcf."
+                },
+                "skip_variant_calling": {
+                    "type": "boolean",
+                    "description": "Whether to skip the variant calling stage to identify variants from the aligned reads.",
+                    "fa_icon": "fas fa-forward",
+                    "help_text": "Disable this option to perform variant calling using GATK HaplotypeCaller and BCFtools mpileup. This stage generates a VCF file containing the identified variants."
+                },
+                "skip_intersection_thinning": {
+                    "type": "boolean",
+                    "description": "Whether to skip the intersection and thinning of the called variants to a set of high-quality, independent variants for relatedness estimation.",
+                    "fa_icon": "fas fa-forward",
+                    "help_text": "Disable this option to perform intersection and thinning of the called variants using GATK SelectVariants and VCFtools. This step reduces the variant set to a subset of high-quality, independent variants for downstream relatedness estimation."
+                },
+                "skip_relatedness_estimation": {
+                    "type": "boolean",
+                    "description": "Whether to skip the relatedness estimation stage.",
+                    "fa_icon": "fas fa-forward",
+                    "help_text": "Disables this option to estimate relatedness between samples using the called variants. This stage uses tools like READ, BREADR and NGSrelate to compute relatedness metrics."
+                }
+            },
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "skip_variant_calling": { "const": true }
+                        },
+                        "required": ["skip_variant_calling"]
+                    },
+                    "then": {
+                        "properties": {
+                            "skip_intersection_thinning": { "const": true },
+                            "skip_relatedness_estimation": { "const": true }
+                        },
+                        "required": ["skip_intersection_thinning", "skip_relatedness_estimation"]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "skip_intersection_thinning": { "const": true }
+                        },
+                        "required": ["skip_intersection_thinning"]
+                    },
+                    "then": {
+                        "properties": {
+                            "skip_relatedness_estimation": { "const": true }
+                        },
+                        "required": ["skip_relatedness_estimation"]
+                    }
+                }
+            ]
+        },
         "institutional_config_options": {
             "title": "Institutional config options",
             "type": "object",
@@ -173,6 +427,20 @@
                     "default": "https://raw.githubusercontent.com/nf-core/test-datasets/",
                     "hidden": true
                 },
+                "pipelines_testdata_genomicrelatedness_path_suffix": {
+                    "type": "string",
+                    "fa_icon": "far fa-check-circle",
+                    "description": "URL suffix for nf-core/genomicrelatedness's test dataset repository",
+                    "default": "refs/heads/genomicrelatedness/",
+                    "hidden": true
+                },
+                "pipelines_testdata_rnaseq_path_suffix": {
+                    "type": "string",
+                    "fa_icon": "far fa-check-circle",
+                    "description": "URL suffix for nf-core/rnaseq's test dataset repository",
+                    "default": "refs/heads/rnaseq/",
+                    "hidden": true
+                },
                 "trace_report_suffix": {
                     "type": "string",
                     "fa_icon": "far calendar",
@@ -197,6 +465,15 @@
     "allOf": [
         {
             "$ref": "#/$defs/input_output_options"
+        },
+        {
+            "$ref": "#/$defs/reference_genome_options"
+        },
+        {
+            "$ref": "#/$defs/variant_set_options"
+        },
+        {
+            "$ref": "#/$defs/skip_stages_options"
         },
         {
             "$ref": "#/$defs/institutional_config_options"
