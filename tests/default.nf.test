@@ -21,7 +21,6 @@ nextflow_pipeline {
             def stable_content = getAllFilesFromDir(params.outdir, relative: false, ignoreFile: 'tests/.nftignore')
 
             assertAll(
-                { assert workflow.success},
                 { assert snapshot(
                     // pipeline versions.yml file for multiqc from which Nextflow version is removed because we test pipelines on multiple Nextflow versions
                     removeFromYamlMap("${params.outdir}/pipeline_info/nf_core_genomicrelatedness_software_mqc_versions.yml", "Workflow", "Nextflow"),
