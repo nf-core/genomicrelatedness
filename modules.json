@@ -172,12 +172,12 @@
                     },
                     "spring/decompress": {
                         "branch": "master",
-                        "git_sha": "d0afa49c7c23c9e99a47af9bafb4cee449853560",
+                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
                         "installed_by": ["modules"]
                     },
                     "vcftools": {
                         "branch": "master",
-                        "git_sha": "c58771f3403b7005f2ae0fd277b378961002b127",
+                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
                         "installed_by": ["modules"]
                     }
                 }
