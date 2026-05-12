@@ -3,25 +3,25 @@
         "content": [
             {
                 "BCFTOOLS_CALL": {
-                    "bcftools": 1.22
+                    "bcftools": "1.23.1"
                 },
                 "BCFTOOLS_CONCAT": {
-                    "bcftools": 1.22
+                    "bcftools": "1.23.1"
                 },
                 "BCFTOOLS_INDEX": {
-                    "bcftools": 1.22
+                    "bcftools": "1.23.1"
                 },
                 "BCFTOOLS_ISEC": {
-                    "bcftools": 1.22
+                    "bcftools": "1.23.1"
                 },
                 "BCFTOOLS_MPILEUP": {
-                    "bcftools": 1.22
+                    "bcftools": "1.23.1"
                 },
                 "BCFTOOLS_SORT": {
-                    "bcftools": 1.22
+                    "bcftools": "1.23.1"
                 },
                 "BCFTOOLS_STATS": {
-                    "bcftools": 1.22
+                    "bcftools": "1.23.1"
                 },
                 "BUILD_INTERVALS": {
                     "gawk": "5.3.1"
@@ -74,7 +74,8 @@
                     "gunzip": 1.13
                 },
                 "MOSDEPTH": {
-                    "mosdepth": "0.3.11"
+                    "gzip": 1.14,
+                    "mosdepth": "0.3.14"
                 },
                 "PRESEQ_CCURVE": {
                     "preseq": "3.2.0"
@@ -410,10 +411,10 @@
                 "variant_calling/gatk/stats/called_variants.gatk.bcftools_stats.txt"
             ]
         ],
-        "timestamp": "2026-03-19T09:34:42.946284838",
+        "timestamp": "2026-05-12T10:43:11.078402819",
         "meta": {
-            "nf-test": "0.9.4",
-            "nextflow": "25.10.4"
+            "nf-test": "0.9.5",
+            "nextflow": "26.04.1"
         }
     }
 }
