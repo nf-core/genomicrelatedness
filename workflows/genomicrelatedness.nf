@@ -185,7 +185,7 @@ workflow GENOMICRELATEDNESS {
     } else if (params.bootstrapping_rounds > 0) {
         ch_tbi = tbi_channels[ params.bootstrapping_rounds ]
     } else {
-        ch_tbi = BCFTOOLS_INDEX(ch_vcf).tbi.collect()
+        ch_tbi = BCFTOOLS_INDEX(ch_vcf).index.collect()
     }
 
     //
