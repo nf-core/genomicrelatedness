@@ -65,3 +65,4 @@ variant_calling/gatk/stats/*bcftools_stats.txt
 #- Relatedness -#
 #---------------#
 relatedness_estimation/intersection/sites.txt
+relatedness_estimation/intersection/README.txt
