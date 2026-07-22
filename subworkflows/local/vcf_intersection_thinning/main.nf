@@ -23,7 +23,6 @@ workflow VCF_INTERSECTION_THINNING {
     intervals // channel: [ meta, bed, number_of_intervals]
 
     main:
-    versions = channel.empty()
 
     vcf_tool1_prepared = vcf_tool1
         .map { meta, vcf ->
@@ -112,7 +111,6 @@ workflow VCF_INTERSECTION_THINNING {
         bed,
         [] // diff_variant_file: unused
     )
-    versions = versions.mix(VCFTOOLS_EXCLUDE.out.versions)
 
     vcf_cleaned = VCFTOOLS_EXCLUDE.out.vcf
         .mix(intersection.passthrough)
@@ -127,11 +125,9 @@ workflow VCF_INTERSECTION_THINNING {
         [], // bed: unused
         []  // diff_variant_file: unused
     )
-    versions = versions.mix(VCFTOOLS_THIN.out.versions)
 
     emit:
-    intersection = VCFTOOLS_THIN.out.vcf
-    versions
+    VCFTOOLS_THIN.out.vcf
 }
 
 /*

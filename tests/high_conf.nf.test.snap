@@ -81,7 +81,7 @@
                     "preseq": "3.2.0"
                 },
                 "SAMTOOLS_CONVERT": {
-                    "samtools": "1.23.1"
+                    "samtools": 1.24
                 },
                 "SAMTOOLS_FAIDX": {
                     "samtools": "1.23.1"
@@ -94,9 +94,6 @@
                 },
                 "SAMTOOLS_STATS": {
                     "samtools": "1.23.1"
-                },
-                "VCFTOOLS_THIN": {
-                    "vcftools": "0.1.16"
                 },
                 "Workflow": {
                     "nf-core/genomicrelatedness": "v1.0.0dev"
@@ -119,8 +116,7 @@
                 "genome.fasta.pac:md5,efa6a6851a259e029a8ca89b501b4ccf",
                 "genome.dict:md5,c3db96450757c418fdd8f4e11b941964",
                 "genome.fasta:md5,e050100d0a9a7d06a8accf8424ad0d98",
-                "genome.fasta.fai:md5,2cd76d936cbfa386b14154506c2041b2",
-                "README.txt:md5,9dc1a4ad7cc770ddc79f8fc0bcbc5d1d"
+                "genome.fasta.fai:md5,2cd76d936cbfa386b14154506c2041b2"
             ],
             [
                 "bqsr",
@@ -415,7 +411,7 @@
                 "variant_calling/gatk/stats/called_variants.gatk.bcftools_stats.txt"
             ]
         ],
-        "timestamp": "2026-07-13T10:57:58.843996182",
+        "timestamp": "2026-07-22T11:03:56.254221111",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
