@@ -84,7 +84,7 @@
                     "preseq": "3.2.0"
                 },
                 "SAMTOOLS_CONVERT": {
-                    "samtools": "1.23.1"
+                    "samtools": 1.24
                 },
                 "SAMTOOLS_FAIDX": {
                     "samtools": "1.23.1"
@@ -97,9 +97,6 @@
                 },
                 "SAMTOOLS_STATS": {
                     "samtools": "1.23.1"
-                },
-                "VCFTOOLS_THIN": {
-                    "vcftools": "0.1.16"
                 },
                 "Workflow": {
                     "nf-core/genomicrelatedness": "v1.0.0dev"
@@ -122,8 +119,7 @@
                 "genome.fasta.pac:md5,efa6a6851a259e029a8ca89b501b4ccf",
                 "genome.dict:md5,c3db96450757c418fdd8f4e11b941964",
                 "genome.fasta:md5,e050100d0a9a7d06a8accf8424ad0d98",
-                "genome.fasta.fai:md5,2cd76d936cbfa386b14154506c2041b2",
-                "README.txt:md5,9dc1a4ad7cc770ddc79f8fc0bcbc5d1d"
+                "genome.fasta.fai:md5,2cd76d936cbfa386b14154506c2041b2"
             ],
             [
                 "bootstrapping",
@@ -238,6 +234,7 @@
                 "multiqc/multiqc_data/preseq_complexity_plot_molecules.txt",
                 "multiqc/multiqc_data/samtools-stats-dp.txt",
                 "multiqc/multiqc_data/samtools_alignment_plot.txt",
+                "multiqc/multiqc_data/samtools_insert_size.txt",
                 "multiqc/multiqc_plots",
                 "multiqc/multiqc_plots/pdf",
                 "multiqc/multiqc_plots/pdf/bcftools-stats-subtypes-cnt.pdf",
@@ -273,6 +270,7 @@
                 "multiqc/multiqc_plots/pdf/samtools-stats-dp.pdf",
                 "multiqc/multiqc_plots/pdf/samtools_alignment_plot-cnt.pdf",
                 "multiqc/multiqc_plots/pdf/samtools_alignment_plot-pct.pdf",
+                "multiqc/multiqc_plots/pdf/samtools_insert_size.pdf",
                 "multiqc/multiqc_plots/png",
                 "multiqc/multiqc_plots/png/bcftools-stats-subtypes-cnt.png",
                 "multiqc/multiqc_plots/png/bcftools-stats-subtypes-pct.png",
@@ -307,6 +305,7 @@
                 "multiqc/multiqc_plots/png/samtools-stats-dp.png",
                 "multiqc/multiqc_plots/png/samtools_alignment_plot-cnt.png",
                 "multiqc/multiqc_plots/png/samtools_alignment_plot-pct.png",
+                "multiqc/multiqc_plots/png/samtools_insert_size.png",
                 "multiqc/multiqc_plots/svg",
                 "multiqc/multiqc_plots/svg/bcftools-stats-subtypes-cnt.svg",
                 "multiqc/multiqc_plots/svg/bcftools-stats-subtypes-pct.svg",
@@ -341,6 +340,7 @@
                 "multiqc/multiqc_plots/svg/samtools-stats-dp.svg",
                 "multiqc/multiqc_plots/svg/samtools_alignment_plot-cnt.svg",
                 "multiqc/multiqc_plots/svg/samtools_alignment_plot-pct.svg",
+                "multiqc/multiqc_plots/svg/samtools_insert_size.svg",
                 "multiqc/multiqc_report.html",
                 "pipeline_info",
                 "pipeline_info/nf_core_genomicrelatedness_software_mqc_versions.yml",
@@ -442,10 +442,10 @@
                 "variant_calling/gatk/stats/called_variants.gatk.bcftools_stats.txt"
             ]
         ],
-        "timestamp": "2026-05-12T10:39:11.714785533",
+        "timestamp": "2026-07-22T10:46:39.820891688",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.1"
+            "nextflow": "26.04.6"
         }
     }
 }

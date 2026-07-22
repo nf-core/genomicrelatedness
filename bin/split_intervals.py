@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
+# SPDX-FileCopyrightText: The nf-core/genomicrelatedness team
+# SPDX-License-Identifier: MIT
 """
 Split a BED file into multiple BED files with approximately equal genomic load.
+
+Author: Thomas Isensee
 
 - Preserves genomic order
 - Splits long contigs if necessary

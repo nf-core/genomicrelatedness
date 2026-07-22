@@ -114,7 +114,7 @@ workflow CALL_VARIANTS_BCFTOOLS {
 
     emit:
     vcf = BCFTOOLS_CONCAT.out.vcf
-    tbi = BCFTOOLS_CONCAT.out.tbi
+    tbi = BCFTOOLS_CONCAT.out.index
     multiqc_files
     versions
 }

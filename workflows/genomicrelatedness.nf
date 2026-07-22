@@ -185,7 +185,7 @@ workflow GENOMICRELATEDNESS {
     } else if (params.bootstrapping_rounds > 0) {
         ch_tbi = tbi_channels[ params.bootstrapping_rounds ]
     } else {
-        ch_tbi = BCFTOOLS_INDEX(ch_vcf).tbi.collect()
+        ch_tbi = BCFTOOLS_INDEX(ch_vcf).index.collect()
     }
 
     //
@@ -257,16 +257,15 @@ workflow GENOMICRELATEDNESS {
         CALL_VARIANTS_BCFTOOLS.out.tbi,
         PREPARE_INTERVALS.out.intervals_combined
     )
-    ch_versions = ch_versions.mix(VCF_INTERSECTION_THINNING.out.versions)
 
     //
     // MODULE: ANGSD_NGSRELATE
     //
-    ch_query = VCF_INTERSECTION_THINNING.out.intersection.map { meta, vcf ->
+    ch_query = VCF_INTERSECTION_THINNING.out.map { meta, vcf ->
         tuple(meta, vcf, [])
     }
     BCFTOOLS_QUERY(ch_query, [], [], [])
-    ch_ngsrelate = VCF_INTERSECTION_THINNING.out.intersection
+    ch_ngsrelate = VCF_INTERSECTION_THINNING.out
         .join(BCFTOOLS_QUERY.out.output)
     ANGSD_NGSRELATE(ch_ngsrelate)
 

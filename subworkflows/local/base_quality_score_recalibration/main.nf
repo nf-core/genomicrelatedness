@@ -56,12 +56,24 @@ workflow BASE_QUALITY_SCORE_RECALIBRATION {
             tuple(meta_cram, cram_file, crai_file, table, interval_file)
         }
 
+    // Combine fasta, fai, dict
+    ch_reference = fasta
+        .combine(fai)
+        .combine(dict)
+        .map {
+            meta_fasta, fasta_file,
+            _meta_fai,  fai_file,
+            _meta_dict, dict_file ->
+
+            tuple(meta_fasta, fasta_file, fai_file, dict_file)
+        }
+        .first() // Only one fasta, fai, dict, respectively, so we can take the first
+
     // Run ApplyBQSR
     GATK4_APPLYBQSR(
         ch_cram_with_table,
-        fasta.map { _meta, fasta_file -> [fasta_file] },
-        fai.map { _meta, fai_file -> [fai_file] },
-        dict.map { _meta, dict_file -> [dict_file] },
+        ch_reference,
+        "cram"
     )
 
     // Merge recalibrated CRAMs if needed
