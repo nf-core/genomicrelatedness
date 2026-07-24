@@ -99,7 +99,7 @@
             },
             "mentions": [
                 {
-                    "@id": "#5447edb3-3be4-474d-9ef4-9c5eceff79f9"
+                    "@id": "#2fe56f30-eb2c-4d60-b525-aa41e9cd968e"
                 }
             ],
             "name": "nf-core/genomicrelatedness"
@@ -135,7 +135,7 @@
                 }
             ],
             "dateCreated": "",
-            "dateModified": "2026-04-30T13:32:33Z",
+            "dateModified": "2026-07-24T12:35:52Z",
             "dct:conformsTo": "https://bioschemas.org/profiles/ComputationalWorkflow/1.0-RELEASE/",
             "keywords": [
                 "nf-core",
@@ -175,11 +175,11 @@
             "version": "!>=25.10.4"
         },
         {
-            "@id": "#5447edb3-3be4-474d-9ef4-9c5eceff79f9",
+            "@id": "#2fe56f30-eb2c-4d60-b525-aa41e9cd968e",
             "@type": "TestSuite",
             "instance": [
                 {
-                    "@id": "#cfcdfddf-8a96-41f0-b3a9-d6687d8c82f0"
+                    "@id": "#94793946-beed-44cd-95fd-4e0feb33da7e"
                 }
             ],
             "mainEntity": {
@@ -188,7 +188,7 @@
             "name": "Test suite for nf-core/genomicrelatedness"
         },
         {
-            "@id": "#cfcdfddf-8a96-41f0-b3a9-d6687d8c82f0",
+            "@id": "#94793946-beed-44cd-95fd-4e0feb33da7e",
             "@type": "TestInstance",
             "name": "GitHub Actions workflow for testing nf-core/genomicrelatedness",
             "resource": "repos/nf-core/genomicrelatedness/actions/workflows/nf-test.yml",
