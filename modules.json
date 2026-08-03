@@ -47,7 +47,7 @@
                     },
                     "fastp": {
                         "branch": "master",
-                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
+                        "git_sha": "826a9b28d6da61097d60e1923bb8a2e51de3c5b4",
                         "installed_by": ["modules"]
                     },
                     "gatk4/addorreplacereadgroups": {
@@ -157,17 +157,17 @@
                     },
                     "samtools/index": {
                         "branch": "master",
-                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
+                        "git_sha": "9339809fcb90af8a8b7051e6cd914894d5c52002",
                         "installed_by": ["modules"]
                     },
                     "samtools/merge": {
                         "branch": "master",
-                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
+                        "git_sha": "9339809fcb90af8a8b7051e6cd914894d5c52002",
                         "installed_by": ["modules"]
                     },
                     "samtools/stats": {
                         "branch": "master",
-                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
+                        "git_sha": "9339809fcb90af8a8b7051e6cd914894d5c52002",
                         "installed_by": ["modules"]
                     },
                     "spring/decompress": {
@@ -177,7 +177,7 @@
                     },
                     "vcftools": {
                         "branch": "master",
-                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
+                        "git_sha": "094186cc8b196ebdded57d596d741611ff571cf3",
                         "installed_by": ["modules"]
                     }
                 }
