@@ -37,38 +37,38 @@
                     "fastp": "1.3.6"
                 },
                 "GATK4_ADDORREPLACEREADGROUPS": {
-                    "gatk4": "4.6.2.0"
+                    "gatk4": "4.7.0.0"
                 },
                 "GATK4_ANALYZECOVARIATES": {
-                    "gatk4": "4.6.2.0"
+                    "gatk4": "4.7.0.0"
                 },
                 "GATK4_APPLYBQSR": {
-                    "gatk4": "4.6.2.0"
+                    "gatk4": "4.7.0.0"
                 },
                 "GATK4_BASERECALIBRATOR": {
-                    "gatk4": "4.6.2.0"
+                    "gatk4": "4.7.0.0"
                 },
                 "GATK4_CREATESEQUENCEDICTIONARY": {
-                    "gatk4": "4.6.2.0"
+                    "gatk4": "4.7.0.0"
                 },
                 "GATK4_GATHERBQSRREPORTS": {
-                    "gatk4": "4.6.2.0"
+                    "gatk4": "4.7.0.0"
                 },
                 "GATK4_GENOMICSDBIMPORT": {
-                    "gatk4": "4.6.2.0"
+                    "gatk4": "4.7.0.0"
                 },
                 "GATK4_GENOTYPEGVCFS": {
-                    "gatk4": "4.6.2.0"
+                    "gatk4": "4.7.0.0"
                 },
                 "GATK4_HAPLOTYPECALLER": {
-                    "gatk4": "4.6.2.0"
+                    "gatk4": "4.7.0.0"
                 },
                 "GATK4_MARKDUPLICATES": {
-                    "gatk4": "4.6.2.0",
+                    "gatk4": "4.7.0.0",
                     "samtools": 1.21
                 },
                 "GATK4_MERGEVCFS": {
-                    "gatk4": "4.6.2.0"
+                    "gatk4": "4.7.0.0"
                 },
                 "GUNZIP": {
                     "gunzip": 1.13
@@ -84,7 +84,7 @@
                     "samtools": 1.24
                 },
                 "SAMTOOLS_FAIDX": {
-                    "samtools": "1.23.1"
+                    "samtools": 1.24
                 },
                 "SAMTOOLS_INDEX": {
                     "samtools": 1.24
@@ -414,7 +414,7 @@
                 "variant_calling/gatk/stats/called_variants.gatk.bcftools_stats.txt"
             ]
         ],
-        "timestamp": "2026-08-03T10:06:32.782686278",
+        "timestamp": "2026-08-30T16:56:02.617397426",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"
