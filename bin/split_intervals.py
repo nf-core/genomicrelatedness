@@ -70,6 +70,7 @@ def split_intervals(
     flush()
     return beds
 
+
 def read_bed(path: Path) -> list[tuple[str, int, int]]:
     """
     Read a BED file and return a list of intervals.
@@ -87,6 +88,7 @@ def read_bed(path: Path) -> list[tuple[str, int, int]]:
             contig, start, end = line.rstrip().split()[:3]
             intervals.append((contig, int(start), int(end)))
     return intervals
+
 
 def write_beds(
     beds: list[list[tuple[str, int, int]]],
@@ -106,8 +108,8 @@ def write_beds(
     for i, bed in enumerate(beds, start=1):
         name = f"{out_prefix}_{i:0{pad_width}d}.bed"
         with open(name, "w") as fh:
-            for contig, start, end in bed:
-                fh.write(f"{contig}\t{start}\t{end}\n")
+            fh.writelines(f"{contig}\t{start}\t{end}\n" for contig, start, end in bed)
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(
@@ -129,6 +131,7 @@ def main() -> None:
 
     pad_width = len(str(len(beds)))
     write_beds(beds, args.out_prefix, pad_width)
+
 
 if __name__ == "__main__":
     main()
