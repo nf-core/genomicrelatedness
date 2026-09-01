@@ -48,3 +48,13 @@ repos:
         name: Prevent committing output from pipeline test runs to the pipeline code itself
         entry: ./.hooks/block_pipeline_outdir.sh
         language: script
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.5
+    hooks:
+      # Run the linter
+      - id: ruff-check
+        files: '^bin/split_intervals\.py$'
+        args: [--fix, --show-fixes]
+      # Run the formatter
+      - id: ruff-format
+        files: '^bin/split_intervals\.py$'
