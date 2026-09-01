@@ -11,7 +11,7 @@
 [![nf-test](https://img.shields.io/badge/unit_tests-nf--test-337ab7.svg)](https://www.nf-test.com)
 
 [![Nextflow](https://img.shields.io/badge/version-%E2%89%A525.10.4-green?style=flat&logo=nextflow&logoColor=white&color=%230DC09D&link=https%3A%2F%2Fnextflow.io)](https://www.nextflow.io/)
-[![nf-core template version](https://img.shields.io/badge/nf--core_template-4.0.3-green?style=flat&logo=nfcore&logoColor=white&color=%2324B064&link=https%3A%2F%2Fnf-co.re)](https://github.com/nf-core/tools/releases/tag/4.0.3)
+[![nf-core template version](https://img.shields.io/badge/nf--core_template-4.1.0-green?style=flat&logo=nfcore&logoColor=white&color=%2324B064&link=https%3A%2F%2Fnf-co.re)](https://github.com/nf-core/tools/releases/tag/4.1.0)
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)
 [![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
@@ -132,7 +132,7 @@ The sample sheet is provided as a comma-separated value (CSV) file, with one lin
 1. The first column **sample** holds the individual name enabling cross-referencing to other datasets for downstream analyses (may refer to individual or sample depending on the unit of interest).
 
 2. Columns **fastq_1** and **fastq_2** hold the filepaths to the paired-end sequencing raw reads for forward and reverse read, respectively. Alternatively, the samplesheet can be filled with fastq files encoded in SPRING format (column headers **spring_1** and **spring_2**), or the preprocessing steps can be skipped entirely when BAM (column header **bam**) or CRAM files (column header **cram**) are provided.
-3. The following five columns give more details on the production of the sequencing data based on [`SAM/BAM file format specification`]() (The SAM/BAM Format Specification Work...), required for the preprocessing section by the GATK4 (McKenna et al. 2010; Van der Auwera and O'Connor 2020; GATK 2024). **RGID** holds the unique run identifier, e.g. {FLOWCELL}.{LANE}
+3. The following five columns give more details on the production of the sequencing data based on [`SAM/BAM file format specification`](<>) (The SAM/BAM Format Specification Work...), required for the preprocessing section by the GATK4 (McKenna et al. 2010; Van der Auwera and O'Connor 2020; GATK 2024). **RGID** holds the unique run identifier, e.g. {FLOWCELL}.{LANE}
 4. **RGLB** holds the library identifier
 5. **RGPL** holds the sequencing technology or platform, e.g. ILLUMINA
 6. **RGPU** holds the platform unit, e.g. {FLOWCELL}.{LANE}.{SAMPLE}
