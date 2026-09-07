@@ -95,7 +95,6 @@ workflow GENOMICRELATEDNESS {
     ch_preprocessed = PREPROCESS(ch_samplesheet, ch_fasta, ch_fasta_fai, ch_bwamem2)
     ch_cram = ch_preprocessed.cram
     ch_crai = ch_preprocessed.crai
-    ch_versions = ch_versions.mix(ch_preprocessed.versions)
     ch_multiqc_files = ch_multiqc_files.mix(ch_preprocessed.multiqc_files)
 
     //
