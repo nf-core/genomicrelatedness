@@ -29,7 +29,6 @@ workflow PREPROCESS {
     bwamem2     // channel: [ meta, bwamem2 ]
 
     main:
-    versions = channel.empty()
     multiqc_files = channel.empty()
 
     // Split by file type (spring vs fastq)
@@ -123,7 +122,6 @@ workflow PREPROCESS {
 
     // Preseq analyses
     PRESEQ_CCURVE(cram)
-    versions = versions.mix(PRESEQ_CCURVE.out.versions)
     multiqc_files = multiqc_files.mix(PRESEQ_CCURVE.out.c_curve.map { _meta, file -> file }).mix(PRESEQ_CCURVE.out.log.map{ _meta, file -> file })
 
     PRESEQ_LCEXTRAP(cram)
@@ -153,5 +151,4 @@ workflow PREPROCESS {
     cram
     crai
     multiqc_files
-    versions
 }

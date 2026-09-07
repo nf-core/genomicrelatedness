@@ -137,7 +137,7 @@
                     },
                     "preseq/ccurve": {
                         "branch": "master",
-                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
+                        "git_sha": "85c1724990b626767f9ed59092430d2d145c4607",
                         "installed_by": ["modules"]
                     },
                     "preseq/lcextrap": {
