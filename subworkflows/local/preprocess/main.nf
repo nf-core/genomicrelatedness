@@ -103,7 +103,8 @@ workflow PREPROCESS {
     // Merge BAMs per-sample
     SAMTOOLS_MERGE(
         multi_bams,
-        ch_merge_reference
+        ch_merge_reference,
+        []
     )
 
     NORMALIZE_BAM_NAMES(single_bams)
