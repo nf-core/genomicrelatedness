@@ -101,7 +101,8 @@ workflow BASE_QUALITY_SCORE_RECALIBRATION {
     // Merge CRAMs if multiple intervals
     SAMTOOLS_MERGE(
         merge_input,
-        ch_merge_reference
+        ch_merge_reference,
+        []
     )
 
     // Mix intervals and no_intervals channels together
