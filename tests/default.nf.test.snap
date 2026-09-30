@@ -445,7 +445,7 @@
                 "variant_calling/gatk/stats/called_variants.gatk.bcftools_stats.txt"
             ]
         ],
-        "timestamp": "2026-09-07T10:33:15.526887724",
+        "timestamp": "2026-09-30T11:11:58.586186479",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.6"

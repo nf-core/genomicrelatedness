@@ -17,8 +17,14 @@ workflow PREPARE_INTERVALS {
 
     main:
 
+    build_intervals_input = fai
+    .map {
+        meta, fai_file ->
+        tuple(meta, fai_file, 'bed')
+    }
+
     // Build intervals from FASTA index
-    BUILD_INTERVALS(fai, [], false)
+    BUILD_INTERVALS(build_intervals_input, [], false)
 
     intervals_combined = BUILD_INTERVALS.out.output
     .map { meta, intervals ->

@@ -37,12 +37,12 @@
                     },
                     "bwamem2/index": {
                         "branch": "master",
-                        "git_sha": "62ce917fd775aaef732eb82019de069c765adfd3",
+                        "git_sha": "8327445b5266b0df32212e5c27407546d100429f",
                         "installed_by": ["modules"]
                     },
                     "bwamem2/mem": {
                         "branch": "master",
-                        "git_sha": "62ce917fd775aaef732eb82019de069c765adfd3",
+                        "git_sha": "8327445b5266b0df32212e5c27407546d100429f",
                         "installed_by": ["modules"]
                     },
                     "fastp": {
@@ -117,7 +117,7 @@
                     },
                     "gawk": {
                         "branch": "master",
-                        "git_sha": "6d46786420b4d7bc88eba026eb389c0c5535d120",
+                        "git_sha": "7844e96252d0693fb2331969a1c9790eb831b0f6",
                         "installed_by": ["modules"]
                     },
                     "gunzip": {
@@ -162,7 +162,7 @@
                     },
                     "samtools/merge": {
                         "branch": "master",
-                        "git_sha": "9339809fcb90af8a8b7051e6cd914894d5c52002",
+                        "git_sha": "972faf6f783fe9685267220965a91690741465f9",
                         "installed_by": ["modules"]
                     },
                     "samtools/stats": {
