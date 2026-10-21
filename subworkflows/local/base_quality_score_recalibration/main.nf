@@ -73,11 +73,11 @@ workflow BASE_QUALITY_SCORE_RECALIBRATION {
     GATK4_APPLYBQSR(
         ch_cram_with_table,
         ch_reference,
-        "cram"
+        ["cram","crai"]
     )
 
     // Merge recalibrated CRAMs if needed
-    ch_cram_branch = GATK4_APPLYBQSR.out.cram
+    ch_cram_branch = GATK4_APPLYBQSR.out.reads
         .map{ meta, cram_file ->
             def new_id = (meta.sample ?: meta.id.split('_')[0]) + (meta.bootstrapping_round ? "_${meta.bootstrapping_round}" : "") + "_recalibrated"
             def new_meta = meta + [ id: new_id ] - meta.subMap('interval_name', 'interval_idx')

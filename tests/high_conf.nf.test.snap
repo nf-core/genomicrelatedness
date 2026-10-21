@@ -34,7 +34,7 @@
                     "samtools": "1.22.1"
                 },
                 "FASTP": {
-                    "fastp": "1.3.6"
+                    "fastp": "1.4.0"
                 },
                 "GATK4_ADDORREPLACEREADGROUPS": {
                     "gatk4": "4.7.0.0"
@@ -43,7 +43,8 @@
                     "gatk4": "4.7.0.0"
                 },
                 "GATK4_APPLYBQSR": {
-                    "gatk4": "4.7.0.0"
+                    "gatk4": "4.7.0.0",
+                    "samtools": 1.24
                 },
                 "GATK4_BASERECALIBRATOR": {
                     "gatk4": "4.7.0.0"
@@ -65,7 +66,7 @@
                 },
                 "GATK4_MARKDUPLICATES": {
                     "gatk4": "4.7.0.0",
-                    "samtools": 1.21
+                    "samtools": 1.24
                 },
                 "GATK4_MERGEVCFS": {
                     "gatk4": "4.7.0.0"
@@ -78,6 +79,9 @@
                     "mosdepth": "0.3.14"
                 },
                 "PRESEQ_CCURVE": {
+                    "preseq": "3.2.0"
+                },
+                "PRESEQ_LCEXTRAP": {
                     "preseq": "3.2.0"
                 },
                 "SAMTOOLS_CONVERT": {
@@ -112,6 +116,7 @@
                 "WT_REP1_B_RGID2_R2.fastp.fastq.gz:md5,1c8ab24ebca28933d800366a58576761",
                 "WT_REP2_C_RGID1_R1.fastp.fastq.gz:md5,74953ef463b25bd8bdbb774d44d2c3d4",
                 "WT_REP2_C_RGID1_R2.fastp.fastq.gz:md5,534c4c91def95053378318a0f1ee4d5e",
+                "WT_REP1.lc_extrap.txt:md5,514146af3e5899a804675743d71b8790",
                 "genome.fasta.0123:md5,8fef53cfd6a59fc348dc1eeef099fd2c",
                 "genome.fasta.amb:md5,fdf44d27fc933100024e62c9ca63ef90",
                 "genome.fasta.ann:md5,07c3b7eab2cec1d4a025e73ffb9e4ff4",
@@ -352,6 +357,7 @@
                 "preprocessing/fastp/WT_REP2_C_RGID1_R1.fastp.fastq.gz",
                 "preprocessing/fastp/WT_REP2_C_RGID1_R2.fastp.fastq.gz",
                 "preprocessing/preseq",
+                "preprocessing/preseq/WT_REP1.lc_extrap.txt",
                 "preprocessing/stats",
                 "preprocessing/stats/WT_REP1.stats",
                 "preprocessing/stats/WT_REP2.stats",
@@ -414,10 +420,10 @@
                 "variant_calling/gatk/stats/called_variants.gatk.bcftools_stats.txt"
             ]
         ],
-        "timestamp": "2026-09-30T10:50:03.811235309",
+        "timestamp": "2026-10-21T09:02:58.981365155",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.04.6"
+            "nextflow": "26.10.2"
         }
     }
 }
