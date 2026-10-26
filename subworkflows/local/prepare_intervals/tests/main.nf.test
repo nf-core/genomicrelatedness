@@ -1,0 +1,29 @@
+nextflow_workflow {
+
+    name "Test Subworkflow PREPARE_INTERVALS"
+    script "../main.nf"
+    workflow "PREPARE_INTERVALS"
+
+    tag "subworkflows"
+    tag "subworkflows/prepare_intervals"
+
+    test("test-prepare-intervals") {
+
+        config "./nextflow.config"
+
+        when {
+            workflow {
+                """
+                input[0] = Channel.of([[id:'test'], file(params.modules_testdata_base_path + '/genomics/homo_sapiens/genome/genomeGRCh38_chr21_22.fa.gz.fai', checkIfExists: true)])
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success},
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+    }
+}

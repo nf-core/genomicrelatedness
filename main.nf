@@ -15,9 +15,11 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-include { GENOMICRELATEDNESS  } from './workflows/genomicrelatedness'
 include { PIPELINE_INITIALISATION } from './subworkflows/local/utils_nfcore_genomicrelatedness_pipeline'
 include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_genomicrelatedness_pipeline'
+
+include { GENOMICRELATEDNESS      } from './workflows/genomicrelatedness'
+
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     NAMED WORKFLOWS FOR PIPELINE
@@ -33,7 +35,6 @@ workflow NFCORE_GENOMICRELATEDNESS {
     samplesheet // channel: samplesheet read in from --input
 
     main:
-
     //
     // WORKFLOW: Run pipeline
     //

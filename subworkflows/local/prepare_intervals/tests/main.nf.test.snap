@@ -1,0 +1,117 @@
+{
+    "test-prepare-intervals": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "reference_fasta": "test"
+                        },
+                        "test.bed:md5,47b2722aa24d21c0ee0dc2b2f39427a5",
+                        2
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "I1",
+                            "interval_name": "I1",
+                            "interval_idx": 1,
+                            "reference_fasta": "test"
+                        },
+                        "interval_1.bed:md5,9e2367ddc3e8bd287e0e340925d3e6c6",
+                        4
+                    ],
+                    [
+                        {
+                            "id": "I2",
+                            "interval_name": "I2",
+                            "interval_idx": 2,
+                            "reference_fasta": "test"
+                        },
+                        "interval_2.bed:md5,c5756f1e8c4711a16f006cf130cbbcf9",
+                        4
+                    ],
+                    [
+                        {
+                            "id": "I3",
+                            "interval_name": "I3",
+                            "interval_idx": 3,
+                            "reference_fasta": "test"
+                        },
+                        "interval_3.bed:md5,703443e915b5e611df08742a106e40c5",
+                        4
+                    ],
+                    [
+                        {
+                            "id": "I4",
+                            "interval_name": "I4",
+                            "interval_idx": 4,
+                            "reference_fasta": "test"
+                        },
+                        "interval_4.bed:md5,fc80a4c4f5b525cfcfd582f07c72764d",
+                        4
+                    ]
+                ],
+                "intervals_combined": [
+                    [
+                        {
+                            "id": "test",
+                            "reference_fasta": "test"
+                        },
+                        "test.bed:md5,47b2722aa24d21c0ee0dc2b2f39427a5",
+                        2
+                    ]
+                ],
+                "intervals_split": [
+                    [
+                        {
+                            "id": "I1",
+                            "interval_name": "I1",
+                            "interval_idx": 1,
+                            "reference_fasta": "test"
+                        },
+                        "interval_1.bed:md5,9e2367ddc3e8bd287e0e340925d3e6c6",
+                        4
+                    ],
+                    [
+                        {
+                            "id": "I2",
+                            "interval_name": "I2",
+                            "interval_idx": 2,
+                            "reference_fasta": "test"
+                        },
+                        "interval_2.bed:md5,c5756f1e8c4711a16f006cf130cbbcf9",
+                        4
+                    ],
+                    [
+                        {
+                            "id": "I3",
+                            "interval_name": "I3",
+                            "interval_idx": 3,
+                            "reference_fasta": "test"
+                        },
+                        "interval_3.bed:md5,703443e915b5e611df08742a106e40c5",
+                        4
+                    ],
+                    [
+                        {
+                            "id": "I4",
+                            "interval_name": "I4",
+                            "interval_idx": 4,
+                            "reference_fasta": "test"
+                        },
+                        "interval_4.bed:md5,fc80a4c4f5b525cfcfd582f07c72764d",
+                        4
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-03-19T07:04:07.812314537",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    }
+}

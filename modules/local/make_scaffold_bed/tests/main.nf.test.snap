@@ -1,0 +1,29 @@
+{
+    "test-make-scaffold-bed": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed:md5,affdf35495781d68c055eb44ae8a7012"
+                    ]
+                ],
+                "bed": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bed:md5,affdf35495781d68c055eb44ae8a7012"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.4"
+        },
+        "timestamp": "2026-02-13T14:27:50.796366726"
+    }
+}

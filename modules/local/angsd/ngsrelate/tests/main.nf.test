@@ -1,0 +1,147 @@
+nextflow_process {
+
+    name "Test Process ANGSD_NGSRELATE"
+    script "../main.nf"
+    process "ANGSD_NGSRELATE"
+
+    tag "modules"
+    tag "modules_local"
+    tag "angsd"
+    tag "angsd/ngsrelate"
+
+    test("test-default") {
+        config './nextflow.config'
+
+        setup {
+            run("GUNZIP") {
+                script "modules/nf-core/gunzip/main.nf"
+                process {
+                    """
+                    input[0] = channel.of([
+                                [id:'test'],
+                                file(params.pipelines_testdata_base_path + params.pipelines_testdata_genomicrelatedness_path_suffix + 'data/angsd_ngsrelate/angsd_ngsrelate_test.vcf.gz', checkIfExists: true)
+                            ]
+                    )
+                    """
+                }
+            }
+        }
+
+        when {
+            process {
+                """
+                input[0] = GUNZIP.out.gunzip.map { meta, vcf ->
+                    [ meta, vcf, [] ]
+                }
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(
+                    file(process.out.result.get(0).get(1)).name,
+                    process.out.versions_ngsrelate
+                  ).match()
+                }
+            )
+        }
+    }
+
+    test("test-sample-names") {
+        config './nextflow.config'
+
+        setup {
+            run("BCFTOOLS_QUERY") {
+                script "modules/nf-core/bcftools/query/main.nf"
+                process {
+                    """
+                    input[0] = channel.of([
+                        [id: 'test'],
+                        file(params.pipelines_testdata_base_path + params.pipelines_testdata_genomicrelatedness_path_suffix + 'data/angsd_ngsrelate/angsd_ngsrelate_test.vcf.gz', checkIfExists: true),
+                        []
+                    ])
+                    input[1] = channel.of([])
+                    input[2] = channel.of([])
+                    input[3] = channel.of([])
+                    """
+                }
+            }
+
+            run("GUNZIP") {
+                script "modules/nf-core/gunzip/main.nf"
+                process {
+                    """
+                    input[0] = channel.of([
+                        [id: 'test'],
+                        file(params.pipelines_testdata_base_path + params.pipelines_testdata_genomicrelatedness_path_suffix + 'data/angsd_ngsrelate/angsd_ngsrelate_test.vcf.gz', checkIfExists: true)
+                    ])
+                    """
+                }
+            }
+        }
+
+        when {
+            process {
+                """
+                input[0] = GUNZIP.out.gunzip
+                    .join(BCFTOOLS_QUERY.out.output)
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(
+                    file(process.out.result.get(0).get(1)).name,
+                    process.out.versions_ngsrelate
+                  ).match()
+                }
+            )
+        }
+    }
+
+    test("test - stub") {
+        config './nextflow.config'
+
+        options "-stub"
+
+        setup {
+            run("GUNZIP") {
+                script "modules/nf-core/gunzip/main.nf"
+                process {
+                    """
+                    input[0] = channel.of([
+                                [id:'test'],
+                                file(params.pipelines_testdata_base_path + params.pipelines_testdata_genomicrelatedness_path_suffix + 'data/angsd_ngsrelate/angsd_ngsrelate_test.vcf.gz', checkIfExists: true)
+                            ]
+                    )
+                    """
+                }
+            }
+        }
+
+        when {
+            process {
+                """
+                input[0] = GUNZIP.out.gunzip.map { meta, vcf ->
+                    [ meta, vcf, [] ]
+                }
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(
+                    file(process.out.result.get(0).get(1)).name,
+                    process.out.versions_ngsrelate
+                  ).match()
+                }
+            )
+        }
+    }
+}

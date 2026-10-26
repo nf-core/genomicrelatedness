@@ -1,0 +1,73 @@
+{
+    "test-prepare-genome": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "genome.fasta.0123:md5,d73300d44f733bcdb7c988fc3ff3e3e9",
+                            "genome.fasta.amb:md5,1891c1de381b3a96d4e72f590fde20c1",
+                            "genome.fasta.ann:md5,2df4aa2d7580639fa0fcdbcad5e2e969",
+                            "genome.fasta.bwt.2bit.64:md5,cd4bdf496eab05228a50c45ee43c1ed0",
+                            "genome.fasta.pac:md5,8569fbdb2c98c6fb16dfa73d8eacb070"
+                        ]
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "genome.dict:md5,2433fe2ba31257337bf4c4bd4cb8da15"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "genome.fasta.fai:md5,3520cd30e1b100e55f578db9c855f685"
+                    ]
+                ],
+                "bwamem2_index": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        [
+                            "genome.fasta.0123:md5,d73300d44f733bcdb7c988fc3ff3e3e9",
+                            "genome.fasta.amb:md5,1891c1de381b3a96d4e72f590fde20c1",
+                            "genome.fasta.ann:md5,2df4aa2d7580639fa0fcdbcad5e2e969",
+                            "genome.fasta.bwt.2bit.64:md5,cd4bdf496eab05228a50c45ee43c1ed0",
+                            "genome.fasta.pac:md5,8569fbdb2c98c6fb16dfa73d8eacb070"
+                        ]
+                    ]
+                ],
+                "dict": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "genome.dict:md5,2433fe2ba31257337bf4c4bd4cb8da15"
+                    ]
+                ],
+                "fasta_fai": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "genome.fasta.fai:md5,3520cd30e1b100e55f578db9c855f685"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-03-19T07:09:08.600114708",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    }
+}

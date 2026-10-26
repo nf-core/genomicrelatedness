@@ -1,0 +1,33 @@
+nextflow_process {
+
+    name "Test Process SPLIT_INTERVALS"
+    script "../main.nf"
+    process "SPLIT_INTERVALS"
+
+    tag "modules"
+    tag "modules_local"
+    tag "splitintervals"
+
+    test("test-split-intervals") {
+
+        config "./nextflow.config"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'sample1' ],
+                    file(params.modules_testdata_base_path + 'genomics/homo_sapiens/genome/genome.blacklist_intervals.bed', checkIfExists: true),
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+}

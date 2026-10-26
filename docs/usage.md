@@ -6,49 +6,58 @@
 
 ## Introduction
 
-<!-- TODO nf-core: Add documentation about anything specific to running your pipeline. For general topics, please point to (and add to) the main nf-core website. -->
+`nf-core/genomicrelatedness` provides an end-to-end workflow for estimating genetic relatedness from low-coverage whole-genome sequencing (lcWGS) data. The pipeline is designed for organisms without existing high-confidence variant resources (such as dbSNP), a common situation for non-model species. To address this, the workflow includes a bootstrapping mechanism that iteratively builds a high-confidence variant set directly from the input data. This variant set is then used for consistent downstream variant calling, ensuring reliable genotype likelihoods even at very low coverage.
 
-## Samplesheet input
+After preprocessing, the pipeline performs variant calling using GATK HaplotypeCaller and BCFtools mpileup, merges and filters variants, and then applies multiple relatedness estimation tools (READv2, BREADR, etc.) to produce robust, reproducible relatedness metrics. The workflow supports FASTQ, SPRING-compressed FASTQ, BAM, and CRAM inputs, and is fully containerised for transparent and portable execution across HPC and cloud environments.
 
-You will need to create a samplesheet with information about the samples you would like to analyse before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row as shown in the examples below.
+## Samplesheet configuration
+
+You will need to create a samplesheet with information about the samples you would like to analyse before running the pipeline. Use this parameter to specify its location.
 
 ```bash
 --input '[path to samplesheet file]'
 ```
 
-### Multiple runs of the same sample
+### Overview: Samplesheet Columns
 
-The `sample` identifiers have to be the same when you have re-sequenced the same sample more than once e.g. to increase sequencing depth. The pipeline will concatenate the raw reads before performing any downstream analysis. Below is an example for the same sample sequenced across 3 lanes:
+The pipeline will auto-detect whether a sample is single- or paired-end using the information provided in the samplesheet. It has to be a comma-separated file and can have as many columns as you desire, however, there is a strict requirement for having a `sample` name and at least one file in each row.
+
+| Column     | Description                                                                                                                                                                            |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sample`   | Custom sample name. This entry will be identical for multiple sequencing libraries/runs from the same sample. Spaces in sample names are automatically converted to underscores (`_`). |
+| `fastq_1`  | Full path to FastQ file for Illumina short reads 1. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
+| `fastq_2`  | Full path to FastQ file for Illumina short reads 2. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz"                                                              |
+| `spring_1` | Full path to SPRING file for Illumina short reads 1. File can have the extension ".fq.gz.spring" or ".fastq.gz.spring".                                                                |
+| `spring_2` | Full path to SPRING file for Illumina short reads 2. File can have the extension ".fq.gz.spring" or ".fastq.gz.spring".                                                                |
+| `cram`     | Full path to CRAM file.                                                                                                                                                                |
+| `bam`      | Full path to BAM file.                                                                                                                                                                 |
+| `RGID`     | Unique run identifier following SAM/BAM file format specification, e.g. {FLOWCELL}.{LANE}.                                                                                             |
+| `RGLB`     | Sequencing library identifier following SAM/BAM file format specification.                                                                                                             |
+| `RGPL`     | Sequencing technology or platform following SAM/BAM file format specification, e.g. ILLUMINA.                                                                                          |
+| `RGPU`     | Platform unit following SAM/BAM file format specification, e.g {FLOWCELL}.{LANE}.{SAMPLE}.                                                                                             |
+| `RGSM`     | Custom individual sample name. Can equal the `sample`column but might deviate if multiple samples of the same individual are analyzed.                                                 |
+
+A collection of samplesheet example contents consisting of both single- and paired-end data is listed below.
 
 ```csv title="samplesheet.csv"
-sample,fastq_1,fastq_2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
-CONTROL_REP1,AEG588A1_S1_L003_R1_001.fastq.gz,AEG588A1_S1_L003_R2_001.fastq.gz
-CONTROL_REP1,AEG588A1_S1_L004_R1_001.fastq.gz,AEG588A1_S1_L004_R2_001.fastq.gz
+sample,fastq_1,fastq_2,RGID,RGLB,RGPL,RGPU,RGSM
+Sample1,./input_fastq/L17019-1_W1706_Sample1_R1_001.fastq.gz,./input_fastq/L17019-1_W1706_Sample1_R2_001.fastq.gz,FC1_L17019,lib1,ILLUMINA,FC1_L17019_Sample1a,Sample1a
+Sample2,./input_fastq/L17020-1_W1707_Sample2_R1_001.fastq.gz,./input_fastq/L17020-1_W1707_Sample2_R2_001.fastq.gz,FC1_L17020,lib2,ILLUMINA,FC1_L17020_Sample2a,Sample2a
+Sample3,./input_fastq/L17020-1_W1707_Sample3_R1_001.fastq.gz,,FC1_L17020,lib3,ILLUMINA,FC1_L17020_Sample3a,Sample3a
 ```
-
-### Full samplesheet
-
-The pipeline will auto-detect whether a sample is single- or paired-end using the information provided in the samplesheet. The samplesheet can have as many columns as you desire, however, there is a strict requirement for the first 3 columns to match those defined in the table below.
-
-A final samplesheet file consisting of both single- and paired-end data may look something like the one below. This is for 6 samples, where `TREATMENT_REP3` has been sequenced twice.
 
 ```csv title="samplesheet.csv"
-sample,fastq_1,fastq_2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
-CONTROL_REP2,AEG588A2_S2_L002_R1_001.fastq.gz,AEG588A2_S2_L002_R2_001.fastq.gz
-CONTROL_REP3,AEG588A3_S3_L002_R1_001.fastq.gz,AEG588A3_S3_L002_R2_001.fastq.gz
-TREATMENT_REP1,AEG588A4_S4_L003_R1_001.fastq.gz,
-TREATMENT_REP2,AEG588A5_S5_L003_R1_001.fastq.gz,
-TREATMENT_REP3,AEG588A6_S6_L003_R1_001.fastq.gz,
-TREATMENT_REP3,AEG588A6_S6_L004_R1_001.fastq.gz,
+sample,cram
+Sample1,./input_cram/L17019-1_W1706_Sample1_R1_001.cram,FC1_L17019,lib1,ILLUMINA,FC1_L17019_Sample1a,Sample1a
+Sample2,./input_cram/L17020-1_W1707_Sample2_R1_001.cram,FC1_L17020,lib2,ILLUMINA,FC1_L17020_Sample2a,Sample2a
 ```
 
-| Column    | Description                                                                                                                                                                            |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sample`  | Custom sample name. This entry will be identical for multiple sequencing libraries/runs from the same sample. Spaces in sample names are automatically converted to underscores (`_`). |
-| `fastq_1` | Full path to FastQ file for Illumina short reads 1. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
-| `fastq_2` | Full path to FastQ file for Illumina short reads 2. File has to be gzipped and have the extension ".fastq.gz" or ".fq.gz".                                                             |
+```csv title="samplesheet.csv"
+sample,fastq_1,cram
+Sample1,,./input_cram/L17019-1_W1706_Sample1_R1_001.cram
+Sample2,,./input_cram/L17020-1_W1707_Sample2_R1_001.cram
+Sample3,./input_fastq/L17020-1_W1707_Sample3_R1_001.fastq.gz,
+```
 
 An [example samplesheet](../assets/samplesheet.csv) has been provided with the pipeline.
 
@@ -92,7 +101,33 @@ outdir: './results/'
 <...>
 ```
 
+Alternatively, the params file can be provided in json format:
+
+```bash
+nextflow run nf-core/genomicrelatedness -profile docker -params-file params.json
+```
+
+with:
+
+```json title="params.json"
+{
+  "input": "./samplesheet.csv",
+  "outdir": "./results/",
+  <...>
+}
+```
+
 You can also generate such `YAML`/`JSON` files via [nf-core/launch](https://nf-co.re/launch).
+
+If you do not want to run certain stages of the pipeline, you can specify this in the parameters.
+
+| Column                        | if set to true...                                                             |
+| ----------------------------- | ----------------------------------------------------------------------------- |
+| `hard_filter_variants`        | Performs hard filtering of variants if no high confidence variant is provided |
+| `skip_bqsr`                   | Does not perform Base Quality Score Recalibration                             |
+| `skip_variant_calling`        | Does not perform variant calling using GATK4 and bcftools                     |
+| `skip_intersection_thinning`  | Does not perform intersection of called variants                              |
+| `skip_relatedness_estimation` | Does not perform relatedness estimation                                       |
 
 ### Updating the pipeline
 

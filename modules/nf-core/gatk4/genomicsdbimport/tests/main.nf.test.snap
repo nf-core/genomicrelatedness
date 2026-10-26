@@ -1,0 +1,124 @@
+{
+    "test_gatk4_genomicsdbimport_get_intervalslist": {
+        "content": [
+            "test.interval_list:md5,4c85812ac15fc1cd29711a851d23c0bf",
+            {
+                "versions_gatk4": [
+                    [
+                        "GATK4_GENOMICSDBIMPORT",
+                        "gatk4",
+                        "4.6.2.0"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.3"
+        },
+        "timestamp": "2026-02-05T14:49:00.41976243"
+    },
+    "test_gatk4_genomicsdbimport_create_genomicsdb": {
+        "content": [
+            [
+                "__tiledb_workspace.tdb",
+                "callset.json",
+                "chr22$1$40001",
+                "vcfheader.vcf",
+                "vidmap.json"
+            ],
+            {
+                "versions_gatk4": [
+                    [
+                        "GATK4_GENOMICSDBIMPORT",
+                        "gatk4",
+                        "4.6.2.0"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.3"
+        },
+        "timestamp": "2026-02-05T14:48:51.585741603"
+    },
+    "test_gatk4_genomicsdbimport_update_genomicsdb": {
+        "content": [
+            [
+                "__tiledb_workspace.tdb",
+                "callset.json",
+                "chr22$1$40001",
+                "vcfheader.vcf",
+                "vidmap.json"
+            ],
+            {
+                "versions_gatk4": [
+                    [
+                        "GATK4_GENOMICSDBIMPORT",
+                        "gatk4",
+                        "4.6.2.0"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.3"
+        },
+        "timestamp": "2026-02-05T14:49:10.45494178"
+    },
+    "test_gatk4_genomicsdbimport_stub": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    [
+                        "GATK4_GENOMICSDBIMPORT",
+                        "gatk4",
+                        "4.6.2.0"
+                    ]
+                ],
+                "genomicsdb": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test:md5,d41d8cd98f00b204e9800998ecf8427e"
+                    ]
+                ],
+                "intervallist": [
+                    
+                ],
+                "updatedb": [
+                    
+                ],
+                "versions_gatk4": [
+                    [
+                        "GATK4_GENOMICSDBIMPORT",
+                        "gatk4",
+                        "4.6.2.0"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.3",
+            "nextflow": "25.10.3"
+        },
+        "timestamp": "2026-02-05T14:49:17.286132175"
+    }
+}

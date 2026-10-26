@@ -1,0 +1,36 @@
+nextflow_pipeline {
+
+    name "Test pipeline"
+    script "../main.nf"
+    tag "pipeline"
+    tag "test_high_conf"
+    profile "test_high_conf"
+
+    test("-profile test_high_conf") {
+
+        when {
+            params {
+                outdir = "$outputDir"
+            }
+        }
+
+        then {
+            // stable_name: All files + folders in ${params.outdir}/ with a stable name
+            def stable_name = getAllFilesFromDir(params.outdir, relative: true, includeDir: true, ignore: ['pipeline_info/*.{html,json,txt}', '**/db/*_joint/**'])
+            // stable_path: All files in ${params.outdir}/ with stable content
+            def stable_content = getAllFilesFromDir(params.outdir, relative: false, ignoreFile: 'tests/.nftignore')
+
+            assertAll(
+                { assert workflow.success},
+                { assert snapshot(
+                    // pipeline versions.yml file for multiqc from which Nextflow version is removed because we test pipelines on multiple Nextflow versions
+                    removeFromYamlMap("${params.outdir}/pipeline_info/nf_core_genomicrelatedness_software_mqc_versions.yml", "Workflow", "Nextflow"),
+                    // All files with stable contents
+                    stable_content.isEmpty() ? 'No stable content' : stable_content,
+                    // All stable path name, with a relative path
+                    stable_name,
+                ).match() }
+            )
+        }
+    }
+}

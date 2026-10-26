@@ -1,0 +1,29 @@
+{
+    "test-nomralize-bam-names": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bam:md5,fb76969225f658c10e4cdf496b703a61"
+                    ]
+                ],
+                "bam": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test.bam:md5,fb76969225f658c10e4cdf496b703a61"
+                    ]
+                ]
+            }
+        ],
+        "timestamp": "2026-03-11T13:06:59.485020308",
+        "meta": {
+            "nf-test": "0.9.4",
+            "nextflow": "25.10.4"
+        }
+    }
+}
