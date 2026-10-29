@@ -6,22 +6,22 @@
                     "bcftools": "1.23.1"
                 },
                 "BCFTOOLS_CONCAT": {
-                    "bcftools": "1.23.1"
+                    "bcftools": 1.25
                 },
                 "BCFTOOLS_INDEX": {
-                    "bcftools": "1.23.1"
+                    "bcftools": 1.25
                 },
                 "BCFTOOLS_ISEC": {
-                    "bcftools": "1.23.1"
+                    "bcftools": 1.25
                 },
                 "BCFTOOLS_MPILEUP": {
                     "bcftools": "1.23.1"
                 },
                 "BCFTOOLS_SORT": {
-                    "bcftools": "1.23.1"
+                    "bcftools": 1.25
                 },
                 "BCFTOOLS_STATS": {
-                    "bcftools": "1.23.1"
+                    "bcftools": 1.25
                 },
                 "BUILD_INTERVALS": {
                     "gawk": "5.3.1"
@@ -85,19 +85,19 @@
                     "preseq": "3.2.0"
                 },
                 "SAMTOOLS_CONVERT": {
-                    "samtools": 1.24
+                    "samtools": 1.25
                 },
                 "SAMTOOLS_FAIDX": {
-                    "samtools": 1.24
+                    "samtools": 1.25
                 },
                 "SAMTOOLS_INDEX": {
-                    "samtools": 1.24
+                    "samtools": 1.25
                 },
                 "SAMTOOLS_MERGE": {
-                    "samtools": 1.24
+                    "samtools": 1.25
                 },
                 "SAMTOOLS_STATS": {
-                    "samtools": 1.24
+                    "samtools": 1.25
                 },
                 "VCFTOOLS_THIN": {
                     "vcftools": "0.1.17"
@@ -116,7 +116,7 @@
                 "WT_REP1_B_RGID2_R2.fastp.fastq.gz:md5,1c8ab24ebca28933d800366a58576761",
                 "WT_REP2_C_RGID1_R1.fastp.fastq.gz:md5,74953ef463b25bd8bdbb774d44d2c3d4",
                 "WT_REP2_C_RGID1_R2.fastp.fastq.gz:md5,534c4c91def95053378318a0f1ee4d5e",
-                "WT_REP1.lc_extrap.txt:md5,514146af3e5899a804675743d71b8790",
+                "WT_REP1.lc_extrap.txt:md5,7134dcdd810975ace6096df800d9734c",
                 "genome.fasta.0123:md5,8fef53cfd6a59fc348dc1eeef099fd2c",
                 "genome.fasta.amb:md5,fdf44d27fc933100024e62c9ca63ef90",
                 "genome.fasta.ann:md5,07c3b7eab2cec1d4a025e73ffb9e4ff4",
@@ -420,10 +420,10 @@
                 "variant_calling/gatk/stats/called_variants.gatk.bcftools_stats.txt"
             ]
         ],
-        "timestamp": "2026-10-21T09:02:58.981365155",
+        "timestamp": "2026-10-29T10:34:27.266266747",
         "meta": {
             "nf-test": "0.9.5",
-            "nextflow": "26.10.2"
+            "nextflow": "26.10.4"
         }
     }
 }
