@@ -4,8 +4,8 @@ process ANGSD_NGSRELATE {
 
     conda "${moduleDir}/environment.yml"
     container "${workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container
-        ? 'https://depot.galaxyproject.org/singularity/ngsrelate:2.0--hea85c65_0':
-          'biocontainers/ngsrelate:2.0--hea85c65_0' }"
+        ? 'https://depot.galaxyproject.org/singularity/ngsrelate:2.3.1--h3be2455_0':
+          'biocontainers/ngsrelate:2.3.1--h3be2455_0' }"
 
     input:
     tuple val(meta), path(vcf), path(sample_names)
