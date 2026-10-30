@@ -5,4 +5,4 @@ channels:
   - bioconda
 dependencies:
   # renovate: datasource=conda depName=bioconda/ngsrelate
-  - bioconda::ngsrelate=2.0
+  - bioconda::ngsrelate=2.3.1
