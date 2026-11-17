@@ -19,7 +19,7 @@ workflow PREPARE_GENOME {
     main:
 
     // Build the BWA index from the provided FASTA
-    BWAMEM2_INDEX(fasta)
+    BWAMEM2_INDEX(fasta, [])
 
     // Build the sequence dictionary
     GATK4_CREATESEQUENCEDICTIONARY(fasta)
