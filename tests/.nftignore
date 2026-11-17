@@ -24,9 +24,11 @@ pipeline_info/*.{html,json,txt,yml}
 #-------------------------#
 #- Preprocessing outputs -#
 #-------------------------#
-preprocessing/fastp/*fastp.{html,json,log}
 preprocessing/alignment/cram/*.metrics
+preprocessing/fastp/*fastp.{html,json,log}
 preprocessing/coverage/*.txt
+preprocessing/preseq/*lc_extrap.txt
+
 preprocessing/stats/*.stats
 
 #--------------#
