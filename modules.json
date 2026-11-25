@@ -37,12 +37,12 @@
                     },
                     "bwamem2/index": {
                         "branch": "master",
-                        "git_sha": "f5408179d4b14af7c2429fa5cf8ef1075b3a4071",
+                        "git_sha": "baaeefb43222b8e9b253330d70d95dce2885b40a",
                         "installed_by": ["modules"]
                     },
                     "bwamem2/mem": {
                         "branch": "master",
-                        "git_sha": "2ea7b517421e97210c41585f2347ad113e643a12",
+                        "git_sha": "baaeefb43222b8e9b253330d70d95dce2885b40a",
                         "installed_by": ["modules"]
                     },
                     "fastp": {
@@ -62,7 +62,7 @@
                     },
                     "gatk4/applybqsr": {
                         "branch": "master",
-                        "git_sha": "2ea7b517421e97210c41585f2347ad113e643a12",
+                        "git_sha": "9804fc814f848fd7100b2203e35ff6d5321d031f",
                         "installed_by": ["modules"]
                     },
                     "gatk4/baserecalibrator": {
@@ -97,7 +97,7 @@
                     },
                     "gatk4/markduplicates": {
                         "branch": "master",
-                        "git_sha": "2ea7b517421e97210c41585f2347ad113e643a12",
+                        "git_sha": "9804fc814f848fd7100b2203e35ff6d5321d031f",
                         "installed_by": ["modules"]
                     },
                     "gatk4/mergevcfs": {
@@ -147,27 +147,27 @@
                     },
                     "samtools/convert": {
                         "branch": "master",
-                        "git_sha": "80eb474060aa4aa6d7b4b00e0dc785174f156a28",
+                        "git_sha": "9804fc814f848fd7100b2203e35ff6d5321d031f",
                         "installed_by": ["modules"]
                     },
                     "samtools/faidx": {
                         "branch": "master",
-                        "git_sha": "80eb474060aa4aa6d7b4b00e0dc785174f156a28",
+                        "git_sha": "9804fc814f848fd7100b2203e35ff6d5321d031f",
                         "installed_by": ["modules"]
                     },
                     "samtools/index": {
                         "branch": "master",
-                        "git_sha": "80eb474060aa4aa6d7b4b00e0dc785174f156a28",
+                        "git_sha": "9804fc814f848fd7100b2203e35ff6d5321d031f",
                         "installed_by": ["modules"]
                     },
                     "samtools/merge": {
                         "branch": "master",
-                        "git_sha": "80eb474060aa4aa6d7b4b00e0dc785174f156a28",
+                        "git_sha": "9804fc814f848fd7100b2203e35ff6d5321d031f",
                         "installed_by": ["modules"]
                     },
                     "samtools/stats": {
                         "branch": "master",
-                        "git_sha": "80eb474060aa4aa6d7b4b00e0dc785174f156a28",
+                        "git_sha": "9804fc814f848fd7100b2203e35ff6d5321d031f",
                         "installed_by": ["modules"]
                     },
                     "spring/decompress": {
